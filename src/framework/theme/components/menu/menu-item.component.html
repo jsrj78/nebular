@@ -1,6 +1,6 @@
 <span *ngIf="menuItem.group">
   <i class="menu-icon {{ menuItem.icon }}" *ngIf="menuItem.icon"></i>
-  {{ menuItem.title }}
+  {{ menuItem.title | translate }}
 </span>
 <a *ngIf="menuItem.link && !menuItem.url && !menuItem.children && !menuItem.group"
    [routerLink]="menuItem.link"
@@ -11,7 +11,7 @@
    [class.active]="menuItem.selected"
    (mouseenter)="onHoverItem(menuItem)">
   <i class="menu-icon {{ menuItem.icon }}" *ngIf="menuItem.icon"></i>
-  <span class="menu-title">{{ menuItem.title }}</span>
+  <span class="menu-title">{{ menuItem.title | translate }}</span>
 </a>
 <a *ngIf="menuItem.url && !menuItem.children && !menuItem.link && !menuItem.group"
    [attr.href]="menuItem.url"
@@ -21,7 +21,7 @@
    (mouseenter)="onHoverItem(menuItem)"
    (click)="onSelectItem(menuItem)">
   <i class="menu-icon {{ menuItem.icon }}" *ngIf="menuItem.icon"></i>
-  <span class="menu-title">{{ menuItem.title }}</span>
+  <span class="menu-title">{{ menuItem.title  | translate}}</span>
 </a>
 <a *ngIf="!menuItem.children && !menuItem.link && !menuItem.url && !menuItem.group"
    [attr.target]="menuItem.target"
@@ -30,7 +30,7 @@
    (mouseenter)="onHoverItem(menuItem)"
    (click)="$event.preventDefault(); onItemClick(menuItem);">
   <i class="menu-icon {{ menuItem.icon }}" *ngIf="menuItem.icon"></i>
-  <span class="menu-title">{{ menuItem.title }}</span>
+  <span class="menu-title">{{ menuItem.title | translate }}</span>
 </a>
 <a *ngIf="menuItem.children"
    (click)="$event.preventDefault(); onToggleSubMenu(menuItem);"
@@ -40,7 +40,7 @@
    (mouseenter)="onHoverItem(menuItem)"
    href="#">
   <i class="menu-icon {{ menuItem.icon }}" *ngIf="menuItem.icon"></i>
-  <span class="menu-title">{{ menuItem.title }}</span>
+  <span class="menu-title">{{ menuItem.title | translate }}</span>
   <i class="ion chevron" [class.ion-chevron-left]="!menuItem.expanded"
      [class.ion-chevron-down]="menuItem.expanded"></i>
 </a>
